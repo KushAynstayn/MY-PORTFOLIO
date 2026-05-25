@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -23,4 +27,163 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+@keyframes aurora {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  25% {
+    transform: translate(40px, -30px) scale(1.1);
+  }
+
+  50% {
+    transform: translate(-30px, 20px) scale(0.95);
+  }
+
+  75% {
+    transform: translate(20px, 40px) scale(1.05);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes auroraSlow {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  50% {
+    transform: translate(-50px, 30px) scale(1.15);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes auroraReverse {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  50% {
+    transform: translate(50px, -20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-aurora {
+  animation: aurora 12s ease-in-out infinite;
+}
+
+.animate-auroraSlow {
+  animation: auroraSlow 18s ease-in-out infinite;
+}
+
+.animate-auroraReverse {
+  animation: auroraReverse 15s ease-in-out infinite;
+}
+
+
+/* =========================
+   BORDER ANIMATIONS
+========================= */
+
+@keyframes borderMoveHorizontal {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes borderMoveVertical {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-border-horizontal {
+  animation: borderMoveHorizontal 4s linear infinite;
+}
+
+.animate-border-vertical {
+  animation: borderMoveVertical 4s linear infinite;
+}
+
+
+.particle {
+  background: rgba(34, 211, 238, 0.85);
+  border-radius: 9999px;
+  animation-name: floatParticle;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform-style: preserve-3d;
+}
+
+/* =========================
+   LAYER 1 - BACKGROUND DUST
+========================= */
+.particle-bg {
+  opacity: 0.25;
+  box-shadow:
+    0 0 6px rgba(34, 211, 238, 0.3);
+}
+
+/* =========================
+   LAYER 2 - MID PARTICLES
+========================= */
+.particle-mid {
+  opacity: 0.55;
+  box-shadow:
+    0 0 10px rgba(34, 211, 238, 0.6),
+    0 0 18px rgba(59, 130, 246, 0.3);
+}
+
+/* =========================
+   LAYER 3 - FOREGROUND SPARKS
+========================= */
+.particle-fg {
+  opacity: 0.9;
+  box-shadow:
+    0 0 12px rgba(34, 211, 238, 0.9),
+    0 0 25px rgba(34, 211, 238, 0.4),
+    0 0 40px rgba(168, 85, 247, 0.2);
+}
+
+/* =========================
+   ANIMATION
+========================= */
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0px) translateX(0px) rotateZ(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-120px) translateX(40px) rotateZ(180deg);
+  }
+
+  100% {
+    transform: translateY(-260px) translateX(-30px) rotateZ(360deg);
+    opacity: 0;
+  }
 }
