@@ -16,10 +16,10 @@ const experiences = [
     date: "Feb 2026 – May 2026",
     icon: <Briefcase size={18} />,
     points: [
-      { icon: <Code2 size={18} />, text: "Developed internal business systems." },
+      { icon: <Code2 size={18} />, text: "Developed and optimized internal accounting, loan tracking, and general ledger consolidation systems, transitioning complex legacy workflows into robust web applications." },
       { icon: <ShieldCheck size={18} />, text: "Performed QA testing and debugging." },
       { icon: <Sparkles size={18} />, text: "Implemented feature enhancements." },
-      { icon: <BrainCircuit size={18} />, text: "Used AI-assisted workflows." },
+      { icon: <BrainCircuit size={18} />, text: "Used AI-assisted workflows. Partnered directly with cross-functional users and accounting personnel to gather requirements, map business logic, and implement Role-Based Access Control (RBAC)." },
     ],
   },
 ];

@@ -187,3 +187,34 @@ body {
     opacity: 0;
   }
 }
+
+
+@keyframes gridScroll {
+  0% {
+    transform: perspective(500px) rotateX(65deg) translateY(-30%);
+  }
+  100% {
+    /* Translate exactly down by the size of one grid square (40px) */
+    transform: perspective(500px) rotateX(65deg) translateY(calc(-30% + 40px));
+  }
+}
+
+/* Create a helper utility class if you aren't registering it in tailwind.config.js */
+.animate-grid-scroll {
+  animation: gridScroll 3s linear infinite;
+}
+
+
+
+/* GLOBAL INVISIBLE SCROLLBAR */
+
+html,
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}

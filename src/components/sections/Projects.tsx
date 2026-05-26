@@ -14,7 +14,6 @@ export default function Projects() {
             CYBERPUNK BACKGROUND
       ========================== */}
       <div className="absolute inset-0 overflow-hidden">
-
         {/* BASE */}
         <div className="absolute inset-0 bg-[#050816]" />
 
@@ -23,9 +22,7 @@ export default function Projects() {
         <div className="absolute bottom-[10%] right-[10%] h-[350px] w-[350px] rounded-full bg-blue-500/10 blur-[120px]" />
         <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/5 blur-[150px]" />
 
-        {/* =========================
-              LAYER 1: DISTANT DUST
-        ========================== */}
+        {/* LAYER 1: DISTANT DUST */}
         <div className="absolute inset-0">
           {[...Array(60)].map((_, i) => (
             <div
@@ -43,9 +40,7 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* =========================
-              LAYER 2: MID PARTICLES
-        ========================== */}
+        {/* LAYER 2: MID PARTICLES */}
         <div className="absolute inset-0">
           {[...Array(30)].map((_, i) => (
             <div
@@ -63,9 +58,7 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* =========================
-            LAYER 3: FOREGROUND SPARKS
-        ========================== */}
+        {/* LAYER 3: FOREGROUND SPARKS */}
         <div className="absolute inset-0">
           {[...Array(15)].map((_, i) => (
             <div
@@ -118,20 +111,44 @@ export default function Projects() {
         </motion.div>
 
         {/* PROJECT GRID */}
-        <div className="flex flex-col gap-12">
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              title={project.title}
-              description={project.description}
-              images={project.images}
-              tech={project.tech}
-              status={project.status}
-              featured={project.featured}
-              github={project.github}
-              live={project.live}
-            />
-          ))}
+        <div className="flex flex-col gap-12 overflow-hidden">
+          {projects.map((project, index) => {
+            // Determine side: Index 0 (Project 1) -> Right, Index 1 (Project 2) -> Left, etc.
+            const isSlideFromRight = index % 2 === 0;
+
+            return (
+              <motion.div
+                key={index}
+                initial={{ 
+                  opacity: 0, 
+                  x: isSlideFromRight ? 100 : -100 
+                }}
+                whileInView={{ 
+                  opacity: 1, 
+                  x: 0 
+                }}
+                viewport={{ 
+                  once: true, 
+                  margin: "-100px" // Triggers animation when element is 100px inside viewport
+                }}
+                transition={{ 
+                  duration: 0.8, 
+                  ease: "easeOut" 
+                }}
+              >
+                <ProjectCard
+                  title={project.title}
+                  description={project.description}
+                  images={project.images}
+                  tech={project.tech}
+                  status={project.status}
+                  featured={project.featured}
+                  github={project.github}
+                  live={project.live}
+                />
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
